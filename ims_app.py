@@ -27,27 +27,34 @@ GOOGLE_SHEET_ID = SHEET_IDS.get(sheet_choice)
 
 
 # -----------------------------
+# -----------------------------
 # GOOGLE SHEETS AUTHENTICATION - FIXED
 # -----------------------------
+
+import streamlit as st
+import gspread
+import json
+from oauth2client.service_account import ServiceAccountCredentials
+
+# ✅ Google API Scope
 SCOPE = [
     "https://spreadsheets.google.com/feeds",
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive"
 ]
 
-import os
-import json
-
-# Check if running on Streamlit Cloud (secrets available)
-if "IMS_CREDENTIALS_JSON" in st.secrets:
+# ✅ Choose credentials source (Cloud or Local)
+if st.secrets and "IMS_CREDENTIALS_JSON" in st.secrets:
+    # Streamlit Cloud: use secrets.toml
     creds = json.loads(st.secrets["IMS_CREDENTIALS_JSON"])
     with open("temp_creds.json", "w") as f:
         json.dump(creds, f)
     CREDENTIAL_FILE = "temp_creds.json"
 else:
-    # Fallback to local file for PC use
+    # Local PC fallback
     CREDENTIAL_FILE = "imscredentials.json"
 
+# ✅ Cached Google Sheets client
 @st.cache_resource
 def get_gsheet_client(sheet_id):
     try:
