@@ -43,18 +43,15 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
 ]
 
-# ✅ Choose credentials source (Cloud or Local)
-if st.secrets and "IMS_CREDENTIALS_JSON" in st.secrets:
-    # Streamlit Cloud: use secrets.toml
-    creds = json.loads(st.secrets["IMS_CREDENTIALS_JSON"])
-    with open("temp_creds.json", "w") as f:
-        json.dump(creds, f)
-    CREDENTIAL_FILE = "temp_creds.json"
-else:
-    # Local PC fallback
-    CREDENTIAL_FILE = "imscredentials.json"
+# ✅ Use credentials from Streamlit secrets (no fallback)
+creds = json.loads(st.secrets["IMS_CREDENTIALS_JSON"])
 
-# ✅ Cached Google Sheets client
+# Write to a temporary file for gspread
+with open("temp_creds.json", "w") as f:
+    json.dump(creds, f)
+
+CREDENTIAL_FILE = "temp_creds.json"
+
 @st.cache_resource
 def get_gsheet_client(sheet_id):
     try:
@@ -62,9 +59,8 @@ def get_gsheet_client(sheet_id):
         client = gspread.authorize(creds)
         return client.open_by_key(sheet_id)
     except Exception as e:
-        st.error(f"Error connecting to Google Sheets: {e}")
+        st.error(f"❌ Error connecting to Google Sheets: {e}")
         return None
-
 
 # -----------------------------
 # IMPROVED CACHING FOR API CALLS
