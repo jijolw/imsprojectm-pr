@@ -159,7 +159,7 @@
     "fields": ["Employee Name", "Sex", "Ticket No", "Section", "Date & Time", "Age", "DOA", "Address", "Injury Area", "Activity at Accident", "Start Time", "First Aid", "JE/SSE", "Accident Summary", "Witness 1", "Witness 2"],
     "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
   },
-  "LW4 36A": {
+  "LW4 36/A": {
     "title": "Investigation Report",
     "fields": ["Employee Name", "Ticket No", "Sex", "Section", "Date & Time", "Age Group", "Service Years", "Injury", "Accident Description", "Cause", "Agency", "PPE Worn", "PPE Issued", "Trained", "Transport Mode", "Under Control", "Avoidable", "Suggestions"],
     "signatures": ["Signed by CSO"]
