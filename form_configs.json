@@ -26,7 +26,7 @@
   },
   "LW4 01B": {
     "title": "RAM Analysis File (EMS & OHSAS)",
-    "fields": ["Section", "Activity", "Impact", "ID", "Condition", "S", "O", "D", "Index", "Legal"],
+    "fields": ["Section", "Activity", "Risk", "ID", "S", "O","Index","Harm grade"],
     "signatures": ["Signed by AWM"]
   },
   "LW4 02": {
