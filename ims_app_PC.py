@@ -12,39 +12,6 @@ from xhtml2pdf import pisa
 from jinja2 import Template
 import hashlib
 
-# =========================
-# NEW: utility for column letters (safe beyond Z)
-# =========================
-def _col_letter(col_index_1based: int) -> str:
-    """Convert 1-based column index to A1 letter(s)."""
-    s = ""
-    n = col_index_1based
-    while n > 0:
-        n, r = divmod(n - 1, 26)
-        s = chr(65 + r) + s
-    return s
-
-# =========================
-# NEW: retry helper for 429 quota/rate-limits
-# =========================
-def _retry_gspread(callable_fn, *args, tries=5, base_delay=0.75, **kwargs):
-    """
-    Retries gspread API calls on 429 / quota exceeded errors with exponential backoff.
-    Works both locally and on Streamlit Cloud.
-    """
-    for attempt in range(tries):
-        try:
-            return callable_fn(*args, **kwargs)
-        except gspread.exceptions.APIError as e:
-            # gspread wraps googleapiclient errors; inspect status and message
-            msg = str(e).lower()
-            code = getattr(getattr(e, "response", None), "status_code", None)
-            # 429 or "quota exceeded" or "rate limit"
-            if code == 429 or "quota exceeded" in msg or "rate limit" in msg:
-                time.sleep(base_delay * (2 ** attempt))
-                continue
-            raise
-
 # LOGIN SYSTEM - Updated permissions
 DEFAULT_USERS = {
     "cso": {
@@ -235,9 +202,7 @@ def get_gsheet_client(sheet_id):
         st.error(f"Error connecting to Google Sheets: {e}")
         return None
 
-# =========================
-# API QUOTA MANAGEMENT (kept; used for writes/manual refresh UI only)
-# =========================
+# API QUOTA MANAGEMENT
 class APIQuotaManager:
     def __init__(self, max_calls_per_minute=50):
         self.max_calls = max_calls_per_minute
@@ -264,48 +229,51 @@ class APIQuotaManager:
 
 quota_manager = APIQuotaManager()
 
-# =========================
-# UPDATED: single ranged read + caching + retry
-# =========================
-@st.cache_data(ttl=300, show_spinner=False)
+@st.cache_data(ttl=300)
 def get_sheet_data(sheet_name, sheet_id):
-    sheet_client = get_gsheet_client(sheet_id)
-    if not sheet_client:
+    if not quota_manager.can_make_call():
+        wait_time = quota_manager.wait_time()
+        st.warning(f"⏱️ API quota limit reached. Please wait {wait_time} seconds before refreshing.")
+        return [], []
+    
+    try:
+        quota_manager.record_call()
+        sheet_client = get_gsheet_client(sheet_id)
+        if not sheet_client:
+            return [], []
+
+        worksheet = sheet_client.worksheet(sheet_name)
+        all_values = worksheet.get_all_values()
+        if not all_values:
+            return [], []
+
+        headers = all_values[0]
+        records = []
+        for row in all_values[1:]:
+            while len(row) < len(headers):
+                row.append("")
+            record = dict(zip(headers, row))
+            records.append(record)
+
+        return headers, records
+    except Exception as e:
+        st.error(f"Error fetching data from worksheet '{sheet_name}': {e}")
         return [], []
 
-    # Only the column range here (no sheet prefix)
-    RANGE_OVERRIDES = {
-        "LW4 01A": "A1:L",   # 12 columns: Section..Signed by AWM
-    }
-    range_only = RANGE_OVERRIDES.get(sheet_name, "A1:Z")
-
-    ws = sheet_client.worksheet(sheet_name)
-
-    # ✅ Pass ONLY the range (no "sheet!" prefix)
-    values = _retry_gspread(ws.get, range_only)
-    if not values:
-        return [], []
-
-    headers = values[0]
-    rows = values[1:]
-
-    records = []
-    for r in rows:
-        if len(r) < len(headers):
-            r = r + [""] * (len(headers) - len(r))
-        records.append(dict(zip(headers, r)))
-
-    return headers, records
-# =========================
-# UPDATED: sheet names fetch with retry
-# =========================
-@st.cache_data(ttl=600, show_spinner=False)
+@st.cache_data(ttl=600)
 def get_all_sheet_names(sheet_id):
-    sheet_client = get_gsheet_client(sheet_id)
-    if not sheet_client:
+    if not quota_manager.can_make_call():
         return []
-    worksheets = _retry_gspread(sheet_client.worksheets)
-    return [ws.title for ws in worksheets]
+    
+    try:
+        quota_manager.record_call()
+        sheet_client = get_gsheet_client(sheet_id)
+        if not sheet_client:
+            return []
+        return [ws.title for ws in sheet_client.worksheets()]
+    except Exception as e:
+        st.error(f"Error fetching sheet names: {e}")
+        return []
 
 @st.cache_data(ttl=3600)
 def load_form_configs_for_sheet(sheet_type):
@@ -322,7 +290,6 @@ def load_form_configs_for_sheet(sheet_type):
         return {}
 
 def api_rate_limit():
-    # keep this for write paths; reads are now cached and retried separately
     if not quota_manager.can_make_call():
         wait_time = quota_manager.wait_time()
         st.warning(f"⏱️ API quota limit reached. Waiting {wait_time} seconds...")
@@ -511,8 +478,9 @@ if "form_entry" in tab_mapping and tab_mapping["form_entry"] is not None:
             try:
                 api_rate_limit()
                 
-                # NOTE: LW4 01A has no Timestamp/Submitted By columns in your sheet.
-                # We will only write columns that exist in headers (matching your sheet).
+                form_values["Timestamp"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                form_values["Submitted By"] = f"{st.session_state.get('current_user', 'Unknown')} ({st.session_state.get('user_role', 'Unknown')})"
+
                 for signer, signed in signature_values.items():
                     form_values[signer] = "✔️ Yes" if signed else "❌ No"
 
@@ -526,13 +494,10 @@ if "form_entry" in tab_mapping and tab_mapping["form_entry"] is not None:
                     worksheet = sheet_client.worksheet(selected_form)
                     
                     if edit_mode and selected_row_index is not None:
-                        # Use safe col end letter
-                        end_col_letter = _col_letter(len(headers))
-                        a1 = f"A{selected_row_index + 2}:{end_col_letter}{selected_row_index + 2}"
-                        _retry_gspread(worksheet.update, a1, [row])
+                        worksheet.update(f"A{selected_row_index + 2}:{chr(ord('A') + len(headers) - 1)}{selected_row_index + 2}", [row])
                         st.success(f"✅ Row {selected_row_index + 2} updated successfully.")
                     else:
-                        _retry_gspread(worksheet.append_row, row)
+                        worksheet.append_row(row)
                         st.success("✅ New entry submitted successfully.")
                     
                     st.cache_data.clear()
@@ -589,9 +554,11 @@ if "data_view" in tab_mapping and tab_mapping["data_view"] is not None:
                     display_df = filtered_df.copy()
                     display_df.index = range(2, len(display_df) + 2)
                     
-                    # exact order from Google Sheet
+                    # USE THE EXACT ORDER FROM GOOGLE SHEETS HEADERS
+                    # This preserves the column order as it exists in the actual sheet
                     columns_in_sheet_order = view_headers if view_headers else list(display_df.columns)
                     
+                    # Show debug info to help identify the issue
                     with st.expander("🔍 Column Order Debug Info", expanded=False):
                         st.write("**Google Sheets Headers (in order):**")
                         for i, header in enumerate(columns_in_sheet_order, 1):
@@ -601,21 +568,24 @@ if "data_view" in tab_mapping and tab_mapping["data_view"] is not None:
                         for i, col in enumerate(list(display_df.columns), 1):
                             st.write(f"{i}. `{col}`")
                         
+                        # Check if headers match dataframe columns
                         df_cols = list(display_df.columns)
                         if columns_in_sheet_order == df_cols:
                             st.success("✅ Headers and DataFrame columns match perfectly!")
                         else:
                             st.warning("⚠️ Headers and DataFrame columns don't match exactly")
                     
-                    # reorder using headers
+                    # Use the headers order to reorder the dataframe
                     try:
+                        # Only use columns that actually exist in the dataframe
                         valid_columns = [col for col in columns_in_sheet_order if col in display_df.columns]
                         display_ordered = display_df[valid_columns]
                     except:
+                        # Fallback to dataframe's natural column order
                         display_ordered = display_df
                         st.warning("Using DataFrame's natural column order as fallback")
                     
-                    # style signature fields if present
+                    # Apply styling to signature fields
                     sheet_config = form_configs.get(view_sheet, {})
                     configured_signature_fields = sheet_config.get("signatures", [])
                     
@@ -627,6 +597,7 @@ if "data_view" in tab_mapping and tab_mapping["data_view"] is not None:
                             return 'background-color: #f8d7da; color: #721c24; font-weight: bold'
                         return ''
                     
+                    # Apply styling only to signature columns that exist
                     signature_cols_in_df = [col for col in configured_signature_fields if col in display_ordered.columns]
                     if signature_cols_in_df:
                         styled_df = display_ordered.style.applymap(style_signatures, subset=signature_cols_in_df)
@@ -634,8 +605,10 @@ if "data_view" in tab_mapping and tab_mapping["data_view"] is not None:
                     else:
                         st.dataframe(display_ordered, use_container_width=True, height=500)
                     
+                    # Show what order we're actually using
                     st.info(f"📋 Displaying columns in Google Sheets order: {len(display_ordered.columns)} columns")
                     
+                    # Show column breakdown
                     with st.expander("📊 Column Details"):
                         st.write("**Columns being displayed (in current order):**")
                         for i, col in enumerate(display_ordered.columns, 1):
@@ -665,6 +638,7 @@ if "data_view" in tab_mapping and tab_mapping["data_view"] is not None:
                     start_idx = (current_page - 1) * cards_per_page
                     end_idx = min(start_idx + cards_per_page, total_cards)
                     
+                    # Use the same header order for cards
                     columns_in_sheet_order = view_headers if view_headers else list(filtered_df.columns)
                     
                     for idx in range(start_idx, end_idx):
@@ -675,6 +649,7 @@ if "data_view" in tab_mapping and tab_mapping["data_view"] is not None:
                             st.markdown(f"### 📄 Row {actual_row_num}")
                             col1, col2 = st.columns(2)
                             
+                            # Use Google Sheets header order for card display
                             ordered_items = []
                             for field in columns_in_sheet_order:
                                 if field in row.index:
