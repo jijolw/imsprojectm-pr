@@ -1,253 +1,703 @@
 {
-  "GF A": {
-    "title": "Title Page",
-    "fields": ["Document Title", "Issue No", "Issue Date", "Rev. No", "Rev. Date", "Prepared By"],
-    "signatures": ["Approved By"]
-  },
-  "GF B": {
-    "title": "Identification Slip",
-    "fields": ["Title of Document", "Nature of Document", "Issue Status", "Copy Number", "Issued To", "Issued By", "Date"],
-    "signatures": ["Approved By"]
-  },
-  "GF C": {
-    "title": "Contents",
-    "fields": ["Sl. No", "Subject", "Record No", "No of Pages"],
-    "signatures": ["Approved By"]
-  },
-  "GF D": {
-    "title": "Amendments",
-    "fields": ["Sl. No", "Chapter No & Page No", "Old Issue", "New Issue", "Summary of Change", "Rev. No", "Date"],
-    "signatures": ["Approved By"]
-  },
   "LW4 01A": {
     "title": "RAM Analysis File (EMS & OHSAS)",
-    "fields": ["Section", "Activity", "Impact", "ID", "Condition", "S", "O", "D", "Index", "Legal"],
-    "signatures": ["Signed by AWM"]
+    "fields": [
+      "Section",
+      "Activity",
+      "Impact",
+      "ID",
+      "Condition",
+      "S",
+      "O",
+      "D",
+      "Index",
+      "Legal"
+    ],
+    "signatures": [
+      "Signed by AWM"
+    ]
   },
   "LW4 01B": {
     "title": "RAM Analysis File (EMS & OHSAS)",
-    "fields": ["Section", "Activity", "Risk", "ID", "S", "O","Index","Harm grade"],
-    "signatures": ["Signed by AWM"]
+    "fields": [
+      "Section",
+      "Activity",
+      "Risk",
+      "ID",
+      "S",
+      "O",
+      "Index",
+      "Harm grade"
+    ],
+    "signatures": [
+      "Signed by AWM"
+    ]
   },
   "LW4 02": {
     "title": "Monitoring Management Programme Record",
-    "fields": ["Objective", "Details of Action Planned", "Responsibility", "Present Status", "Target", "Revised Target", "Remarks", "Date of Completion"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Objective/Aspect/Hazard",
+      "Action Planned",
+      "Responsibility",
+      "Present Status",
+      "Target",
+      "Revised Target",
+      "Remarks",
+      "Completion Date"
+    ],
+    "signatures": [
+      "Signed by SSE"
+    ]
   },
   "LW4 03": {
     "title": "Mock Drill Record",
-    "fields": ["Date", "Time", "Location", "Nature of Incident", "Equipments Involved", "Observation", "NC Noticed", "Correction", "Corrective Action"],
-    "signatures": ["Signed by SSE", "Signed by CSO"]
+    "fields": [
+      "Date",
+      "Time",
+      "Location",
+      "Nature of Incident",
+      "Equipments Involved",
+      "Observations",
+      "NC Noticed",
+      "Correction",
+      "Corrective Action"
+    ],
+    "signatures": [
+      "Signed by SSE",
+      "Signed by CSO"
+    ]
   },
   "LW4 04": {
     "title": "Consumption of Natural Resources",
-    "fields": ["Item", "DBR/Chelan No & Date", "Received Quantity", "Used Quantity", "Date of Consumption", "Balance Qty", "Remarks"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Item",
+      "DBR/Chelan No & Date",
+      "Received Qty",
+      "Used Qty",
+      "Date of Consumption",
+      "Balance Qty",
+      "Remarks"
+    ],
+    "signatures": [
+      "Signed by SSE"
+    ]
   },
   "LW4 05": {
     "title": "Waste Generation & Disposal Record",
-    "fields": ["Date", "Type of Waste", "Qty Generated", "Qty Disposed", "DS 8 No & Date", "Date of Disposal", "Balance Available"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Date",
+      "Type of Waste",
+      "Qty Generated",
+      "Qty Disposed",
+      "DS8 No. & Date",
+      "Date of Disposal",
+      "Balance for Disposal"
+    ],
+    "signatures": [
+      "Signed by SSE"
+    ]
   },
   "LW4 06": {
     "title": "OH&S Complaints & Check-up Register",
-    "fields": ["Date", "Complaint Details", "Area/Person Affected", "Apparent Cause", "Investigation Details", "Corrective Action", "Remarks"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Date",
+      "Complaint/Hazard",
+      "Affected Area/Person",
+      "Apparent Cause",
+      "Investigation Details",
+      "Corrective Action",
+      "Remarks"
+    ],
+    "signatures": [
+      "Signed by SSE"
+    ]
   },
   "LW4 07": {
     "title": "Accidents/Incidents & Loss Assessment",
-    "fields": ["Date of Incident", "Staff Involved", "WCA Status", "Incident Details", "Injury", "Loss Assessment"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer", "Signed by CSO"]
+    "fields": [
+      "Date of Incident",
+      "Staff Involved",
+      "WCA Status",
+      "Incident Details",
+      "Injury",
+      "Loss Assessment"
+    ],
+    "signatures": [
+      "Signed by SSE",
+      "Signed by Controlling Officer",
+      "Signed by CSO"
+    ]
   },
   "LW4 10": {
     "title": "Calibration History Record",
-    "fields": ["Instrument Name", "ID No", "Range", "Frequency", "Least Count", "Acceptance Criteria", "Date of Calibration", "Due Date", "Calibrated By", "Error Identified", "Status", "Remarks"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
+    "fields": [
+      "Instrument Name",
+      "ID No",
+      "Range",
+      "Frequency",
+      "Least Count",
+      "Acceptance Criteria",
+      "Date of Calibration",
+      "Due Date",
+      "Calibrated By",
+      "Error Identified",
+      "Status",
+      "Remarks"
+    ],
+    "signatures": [
+      "Signed by SSE",
+      "Signed by Controlling Officer"
+    ]
   },
   "LW4 11": {
     "title": "Verification History Record",
-    "fields": ["ID No", "Drawing No", "Description", "Purpose", "Frequency", "Acceptance Criteria", "Verification Date", "Due Date", "Parameter Verified", "Actual Size", "Deviation", "Checking Instrument", "Remarks"],
-    "signatures": ["Signed by Controlling Officer"]
+    "fields": [
+      "ID No",
+      "Drawing No",
+      "Description",
+      "Purpose",
+      "Frequency",
+      "Acceptance Criteria",
+      "Verification Date",
+      "Due Date",
+      "Parameter",
+      "Actual",
+      "Deviation",
+      "Remarks"
+    ],
+    "signatures": [
+      "Checked By",
+      "Verified By",
+      "Reviewed By"
+    ]
   },
   "LW4 13": {
     "title": "Audit Non-Conformity Report (NCR)",
-    "fields": ["Audit ID", "Ref. Standard", "Department", "NCR No", "Date", "Clause", "Non-Conformity", "Root Cause", "Correction", "Corrective Action", "Target Date", "Follow-up Remarks"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
+    "fields": [
+      "Audit ID",
+      "Standard Ref",
+      "Section",
+      "NCR No",
+      "Violation",
+      "Non-Conformity",
+      "Auditor",
+      "Auditee",
+      "Root Cause",
+      "Correction",
+      "Corrective Action",
+      "Target Date",
+      "Follow-up"
+    ],
+    "signatures": [
+      "Signed by Controlling Officer"
+    ]
   },
   "LW4 14": {
     "title": "Employee Wise Training Record",
-    "fields": ["Employee Name", "P.F. No", "Ticket No", "Date of Appointment", "Designation", "Educational Qualification", "Name of the Course", "Duration", "Training At", "Assessment", "Remarks"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Employee Name",
+      "PF No",
+      "Ticket No",
+      "Appointment Date",
+      "Designation",
+      "Qualification",
+      "Course",
+      "Duration",
+      "Location",
+      "Assessment",
+      "Remarks"
+    ],
+    "signatures": [
+      "Signed by SSE"
+    ]
   },
   "LW4 15": {
     "title": "Change Request Form",
-    "fields": ["Name of Initiator", "Date", "Designation", "Shop", "Name of Document", "Chapter No", "Page No", "Revision No", "Details of Change Requested", "Reasons", "Approval Date", "Previous Version No", "Current Version No"],
-    "signatures": ["Signed by Initiator", "Signed by SSE", "Signed by Controlling Officer"]
+    "fields": [
+      "Initiator Name",
+      "Date",
+      "Designation",
+      "Shop",
+      "Document Name",
+      "Chapter",
+      "Page No",
+      "Revision No",
+      "Details of Change",
+      "Reason"
+    ],
+    "signatures": [
+      "Signed by Initiator",
+      "Signed by SSE",
+      "Approved by Officer"
+    ]
   },
   "LW4 16": {
     "title": "Corrective Action Register",
-    "fields": ["Sl. No", "Source", "Nonconformity", "Corrective Action Proposed", "Target Date", "Implemented", "Implementation Date", "Results/Remarks"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
+    "fields": [
+      "Sl.No",
+      "Source",
+      "Nonconformity",
+      "Corrective Action",
+      "Target Date",
+      "Implemented",
+      "Actual Date",
+      "Remarks"
+    ],
+    "signatures": [
+      "Signed by SSE",
+      "Signed by Controlling Officer"
+    ]
   },
   "LW4 18": {
     "title": "Fire Extinguisher Testing / Refilling",
-    "fields": ["Sl. No", "ID No", "Location", "Refilled Date", "Condition", "Next Due"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "ID No",
+      "Location",
+      "Refilled Date",
+      "Condition",
+      "Next Due"
+    ],
+    "signatures": [
+      "Signed by SSE"
+    ]
   },
   "LW4 20": {
     "title": "Disposition of NCP",
-    "fields": ["Loco/Coach", "Work Order No", "Component", "Qty", "NC Observed", "Date Observed", "Disposition", "Re-Inspection", "Remarks"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
+    "fields": [
+      "Loco/Coach",
+      "Work Order",
+      "Component",
+      "Qty",
+      "NC Observed",
+      "Date",
+      "Disposition",
+      "Reinspection",
+      "Remarks"
+    ],
+    "signatures": [
+      "Signed by JE",
+      "Signed by SSE",
+      "Signed by Controlling Officer"
+    ]
   },
   "LW4 21": {
     "title": "Data Analysis Record",
-    "fields": ["NC/Complaint", "Ref No", "Date", "Root Cause", "Corrective Action", "Further Analysis", "Remarks"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
+    "fields": [
+      "NC/Complaint",
+      "Ref No",
+      "Date",
+      "Root Cause",
+      "Corrective Action",
+      "Further Analysis",
+      "Remarks"
+    ],
+    "signatures": [
+      "Signed by SSE",
+      "Signed by Controlling Officer"
+    ]
   },
   "LW4 22": {
-  "title": "System Deviation in Practice",
-  "fields": [
-    "Sl. No",
-    "Procedure Reference",
-    "Application Area",
-    "Date",
-    "Deviation Details",
-    "Period From",
-    "Period To",
-    "Signature of SSE",
-    "Authorising Remarks",
-    "Authorised Period From",
-    "Authorised Period To",
-    "Signature of Controlling Officer",
-    "Deviation Status",
-    "Closed Date",
-    "Signature of SSE/Shop",
-    "Signature of SSE/IN",
-    "Reasons for Not Closing",
-    "Extension Requested Upto",
-    "Signature of Dy.CME/Dy.CEE"
-  ],
-  "signatures": [
-    "Signature of SSE",
-    "Signature of Controlling Officer",
-    "Signature of SSE/Shop",
-    "Signature of SSE/IN",
-    "Signature of Dy.CME/Dy.CEE"
-  ]
-},
+    "title": "System Deviation in Practice",
+    "fields": [
+      "Sl. No",
+      "Procedure Reference",
+      "Application Area",
+      "Date",
+      "Deviation Details",
+      "Period From",
+      "Period To",
+      "Deviation Status",
+      "Closed Date",
+      "Reasons for Not Closing",
+      "Extension Requested Upto"
+    ],
+    "signatures": [
+      "Signature of SSE",
+      "Authorising Remarks",
+      "Authorised Period From",
+      "Authorised Period To",
+      "Signature of Controlling Officer",
+      "Signature of SSE/Shop",
+      "Signature of SSE/IN",
+      "Signature of Dy.CME/Dy.CEE"
+    ]
+  },
   "LW4 23": {
     "title": "Material Released Prior to Verification",
-    "fields": ["Description of Material", "PL No", "Quantity", "Urgency Reason", "Approved By", "Authorized By SMM", "Qty Released", "Remarks of DSK", "Material Identification", "Inspection Details", "Nonconformity (if any)", "Recall Details"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
+    "fields": [
+      "Material",
+      "PL No",
+      "Qty",
+      "Urgency Reason",
+      "Released by SMM",
+      "Qty Released",
+      "Material Identified",
+      "Remarks"
+    ],
+    "signatures": [
+      "Signed by SSE",
+      "Approved by Officer"
+    ]
   },
   "LW4 25": {
     "title": "Internal Customer Complaint & Satisfaction Feedback",
-    "fields": ["Date", "Customer Name", "Item", "Performance Rating", "Remarks", "Supply Promptness", "Complaints", "Suggestions"],
-    "signatures": ["Signed by Customer"]
+    "fields": [
+      "Customer Name",
+      "Period",
+      "Item",
+      "Performance",
+      "Rating",
+      "Remarks",
+      "Promptness",
+      "Complaints",
+      "Suggestions"
+    ],
+    "signatures": [
+      "Signed by Customer"
+    ]
   },
   "LW4 26": {
     "title": "Customer Complaints on Products and Services",
-    "fields": ["Complaint No", "Customer", "Complaint Date", "Complaint", "Investigation", "Observation", "Corrective Action", "Target Date"],
-    "signatures": ["Signed by Controlling Officer"]
+    "fields": [
+      "Complaint No",
+      "Date",
+      "Customer",
+      "Complaint",
+      "Investigation",
+      "Observation",
+      "Corrective Action",
+      "Target Date"
+    ],
+    "signatures": [
+      "Signed by Controlling Officer"
+    ]
   },
   "LW4 27": {
     "title": "Monitoring Customer Complaints",
-    "fields": ["Month", "No. of Complaints", "Area", "Cumulative Complaints", "Corrective Action Taken", "Pending Complaints", "Remarks"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
+    "fields": [
+      "Month",
+      "Complaints Received",
+      "Section",
+      "Cumulative",
+      "Corrective Done",
+      "Pending",
+      "Remarks"
+    ],
+    "signatures": [
+      "Signed by SSE",
+      "Signed by Controlling Officer"
+    ]
   },
   "LW4 29": {
     "title": "Requisition for Inter Shop Work Orders",
-    "fields": ["Component Name", "Drawing No", "Sub-Assembly", "Material PL No", "Route", "WO No", "Qty Per Loco", "Total Qty", "Stock Status", "Previous WO Status", "80% Certification"],
-    "signatures": ["Signed by Controlling Officer"]
+    "fields": [
+      "Component",
+      "Drawing No",
+      "Sub-Assembly",
+      "Material PL",
+      "Route",
+      "WO No",
+      "Qty per Loco",
+      "Total Qty",
+      "Stock Status",
+      "Previous WO",
+      "Approval by Officer"
+    ],
+    "signatures": []
   },
   "LW4 30": {
     "title": "Machine/Plant Under Repair",
-    "fields": ["Date", "Time", "Machine No", "Unified Code", "Shop", "Machine Description", "Out of Order Timestamp", "Apparent Defect", "Initiated By", "Forwarded To"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Date",
+      "Time",
+      "Machine No",
+      "Unified Code",
+      "Shop",
+      "Description",
+      "Out of Order Date",
+      "Apparent Defect",
+      "Initiated By",
+      "Forwarded To"
+    ],
+    "signatures": []
   },
   "LW4 31": {
     "title": "Work Order Register",
-    "fields": ["W.O. No", "Component", "Qty", "Material Required", "Source", "Raw Available", "Part Supply", "Balance Qty", "Customer", "Remarks"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "W.O. No",
+      "Component Description",
+      "Qty",
+      "Material Req.",
+      "RM Source",
+      "Raw Available",
+      "Part Supply",
+      "Balance",
+      "Customer",
+      "Remarks"
+    ],
+    "signatures": []
   },
   "LW4 32": {
     "title": "Environmental & Safety Non-Conformity Register",
-    "fields": ["Date", "NC Area", "Detected By", "Description", "Impact Assessment", "Corrective Action", "Remarks"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
+    "fields": [
+      "Date",
+      "NC Description",
+      "Area",
+      "Detected By",
+      "Impact",
+      "Corrective Action",
+      "Remarks"
+    ],
+    "signatures": [
+      "Signed by SSE",
+      "Signed by Controlling Officer"
+    ]
   },
   "LW4 33": {
     "title": "List of System Records",
-    "fields": ["Record No", "Title of Record", "Type of Record", "Location", "Retention Period"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Record No",
+      "Title",
+      "Type",
+      "Location",
+      "Retention Period"
+    ],
+    "signatures": []
   },
   "LW4 35": {
     "title": "Master List of Documents",
-    "fields": ["Document Code", "Version", "Document Name", "Copy Holder Designation", "Copy No", "Issue Details", "Rev No & Date", "Chp No & Page No", "Withdrawal Status"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Document Code",
+      "Version",
+      "Document Name",
+      "Copy Holder",
+      "Copy No",
+      "Issue Details",
+      "Rev Details",
+      "Withdrawal Status"
+    ],
+    "signatures": []
   },
   "LW4 36": {
     "title": "Accident Report",
-    "fields": ["Employee Name", "Sex", "Ticket No", "Section", "Date & Time", "Age", "DOA", "Address", "Injury Area", "Activity at Accident", "Start Time", "First Aid", "JE/SSE", "Accident Summary", "Witness 1", "Witness 2"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
+    "fields": [
+      "Employee Name",
+      "Ticket No",
+      "Shop",
+      "Date/Time",
+      "Age",
+      "DOA",
+      "Address",
+      "Injury",
+      "Activity at Accident",
+      "Start Time",
+      "First Aid",
+      "Controlling Officer",
+      "Accident Summary",
+      "Witness 1/2"
+    ],
+    "signatures": [
+      "Signatures"
+    ]
   },
-  "LW4 36/A": {
-    "title": "Investigation Report",
-    "fields": ["Employee Name", "Ticket No", "Sex", "Section", "Date & Time", "Age Group", "Service Years", "Injury", "Accident Description", "Cause", "Agency", "PPE Worn", "PPE Issued", "Trained", "Transport Mode", "Under Control", "Avoidable", "Suggestions"],
-    "signatures": ["Signed by CSO"]
+  "LW4 36A": {
+    "title": "LW4 36A",
+    "fields": [
+      "Employee Name",
+      "Ticket No",
+      "Sex",
+      "Shop",
+      "Date",
+      "Service Years",
+      "Injury",
+      "Accident Description",
+      "Cause",
+      "Agency",
+      "PPE Used",
+      "PPE Issued",
+      "Trained",
+      "Transport",
+      "Control",
+      "Avoidable",
+      "Suggestions"
+    ],
+    "signatures": [
+      "Signed by CSO"
+    ]
   },
   "LW4 37": {
     "title": "List of Significant Energy Uses",
-    "fields": ["Shop", "Energy Source", "Total Annual Consumption", "Variables Affecting SEU", "Deviation Criteria", "OCP No"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Shop",
+      "Energy Source",
+      "Annual Consumption",
+      "Variables",
+      "Deviation Criteria",
+      "OCP No"
+    ],
+    "signatures": []
   },
   "LW4 38": {
     "title": "List of Energy Sources",
-    "fields": ["Energy Source", "2021-22", "2020-21", "2019-20"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Energy Source",
+      "2021-22",
+      "2020-21",
+      "2019-20"
+    ],
+    "signatures": []
   },
   "LW4 39": {
     "title": "List of Variables Affecting Energy Use",
-    "fields": ["Variable", "Units Consumed", "Remarks"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Variable",
+      "Units Consumed",
+      "Remarks"
+    ],
+    "signatures": []
   },
   "LW4 40": {
     "title": "Current Energy Performance in Significant Areas",
-    "fields": ["Substation", "Shop", "Device Description", "Rated Power", "Measured Performance", "Opportunities for Improvement"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Substation",
+      "Shop",
+      "Device",
+      "Rating",
+      "Performance",
+      "Improvement Opportunities"
+    ],
+    "signatures": []
   },
   "LW4 41": {
     "title": "Opportunities for Energy Performance Improvement",
-    "fields": ["Opportunity Description", "Energy Management Plan"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Opportunity",
+      "Energy Management Plan"
+    ],
+    "signatures": []
   },
   "LW4 42": {
     "title": "Variables Affecting Significant Energy Performance",
-    "fields": ["Variable", "Units Consumed", "Remarks"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Variable",
+      "Units Consumed",
+      "Remarks"
+    ],
+    "signatures": []
   },
   "LW4 43": {
     "title": "List of Electrical Energy Uses",
-    "fields": ["Description", "Qty", "Shop"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Description",
+      "Qty",
+      "Shop"
+    ],
+    "signatures": []
   },
   "LW4 44": {
     "title": "Energy Score Register",
-    "fields": ["Machine Name", "Shop", "Connected Load", "Average Consumption", "Date", "Action Taken", "Owner"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Machine Name",
+      "Shop",
+      "Connected Load",
+      "Consumption",
+      "Date",
+      "Action",
+      "Owner"
+    ],
+    "signatures": []
   },
   "LW4 45": {
     "title": "Register for High Speed Diesel Consumption",
-    "fields": ["Date", "Description", "Vehicle No", "Qty Issued", "Ticket No"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Date",
+      "Description",
+      "Vehicle No",
+      "Qty Issued",
+      "Ticket No"
+    ],
+    "signatures": [
+      "Signed by Emp"
+    ]
   },
   "LW4 46": {
     "title": "Bharat Cutting Gas Cylinder Distribution",
-    "fields": ["Date", "Cylinder No", "Section", "Company", "Returned Date", "Qty Issued (Kgs)"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Date",
+      "Cylinder No",
+      "Shop",
+      "Company",
+      "Returned Date",
+      "Qty (Kgs)"
+    ],
+    "signatures": []
   },
   "LW4 47": {
     "title": "Gas Acetylene Cylinder Distribution",
-    "fields": ["Date", "Cylinder No", "Section", "Company", "Returned Date", "Qty Issued (Cu.m)"],
-    "signatures": ["Signed by SSE"]
+    "fields": [
+      "Date",
+      "Cylinder No",
+      "Shop",
+      "Company",
+      "Returned Date",
+      "Qty (cu.m)"
+    ],
+    "signatures": []
+  },
+  "GF A": {
+    "title": "Title Page",
+    "fields": [
+      "Document Title",
+      "Issue No",
+      "Issue Date",
+      "Rev. No",
+      "Rev. Date",
+      "Prepared By"
+    ],
+    "signatures": [
+      "Approved By"
+    ]
+  },
+  "GF B": {
+    "title": "Identification Slip",
+    "fields": [
+      "Title of Document",
+      "Nature of Document",
+      "Issue Status",
+      "Copy Number",
+      "Issued To",
+      "Issued By",
+      "Date"
+    ],
+    "signatures": [
+      "Approved By"
+    ]
+  },
+  "GF C": {
+    "title": "Contents",
+    "fields": [
+      "Sl. No",
+      "Subject",
+      "Record No",
+      "No of Pages"
+    ],
+    "signatures": [
+      "Approved By"
+    ]
+  },
+  "GF D": {
+    "title": "Amendments",
+    "fields": [
+      "Sl. No",
+      "Chapter No & Page No",
+      "Old Issue",
+      "New Issue",
+      "Summary of Change",
+      "Rev. No",
+      "Date"
+    ],
+    "signatures": [
+      "Approved By"
+    ]
   }
 }
