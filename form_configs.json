@@ -2,27 +2,27 @@
   "GF A": {
     "title": "Title Page",
     "fields": ["Document Title", "Issue No", "Issue Date", "Rev. No", "Rev. Date", "Prepared By", "Approved By"],
-    "signatures": ["Signed by SSE"]
+    "signatures": ["Signed by AWM"]
   },
   "GF B": {
     "title": "Identification Slip",
     "fields": ["Title of Document", "Nature of Document", "Issue Status", "Copy Number", "Issued To", "Issued By", "Date"],
-    "signatures": ["Signed by SSE"]
+    "signatures": ["Signed by AWM"]
   },
   "GF C": {
     "title": "Contents",
     "fields": ["Sl. No", "Subject", "Record No", "No of Pages"],
-    "signatures": ["Signed by SSE"]
+    "signatures": ["Signed by AWM"]
   },
   "GF D": {
     "title": "Amendments",
     "fields": ["Sl. No", "Chapter No & Page No", "Old Issue", "New Issue", "Summary of Change", "Rev. No", "Date"],
-    "signatures": ["Signed by SSE"]
+    "signatures": ["Signed by AWM"]
   },
   "LW4 01": {
     "title": "RAM Analysis File (EMS & OHSAS)",
     "fields": ["Section", "Activity", "Impact", "ID", "Condition", "S", "O", "D", "Index", "Legal"],
-    "signatures": ["Signed by SSE"]
+    "signatures": ["Signed by AWM"]
   },
   "LW4 02": {
     "title": "Monitoring Management Programme Record",
@@ -100,10 +100,36 @@
     "signatures": ["Signed by SSE", "Signed by Controlling Officer"]
   },
   "LW4 22": {
-    "title": "System Deviation in Practice",
-    "fields": ["Sl. No", "Procedure Reference", "Application Area", "Deviation Details", "Period From", "Period To", "Authorising Remarks", "Closure Remarks", "Reason for Not Closing"],
-    "signatures": ["Signed by SSE", "Signed by Controlling Officer", "Signed by CSO"]
-  },
+  "title": "System Deviation in Practice",
+  "fields": [
+    "Sl. No",
+    "Procedure Reference",
+    "Application Area",
+    "Date",
+    "Deviation Details",
+    "Period From",
+    "Period To",
+    "Signature of SSE",
+    "Authorising Remarks",
+    "Authorised Period From",
+    "Authorised Period To",
+    "Signature of Controlling Officer",
+    "Deviation Status",
+    "Closed Date",
+    "Signature of SSE/Shop",
+    "Signature of SSE/IN",
+    "Reasons for Not Closing",
+    "Extension Requested Upto",
+    "Signature of Dy.CME/Dy.CEE"
+  ],
+  "signatures": [
+    "Signature of SSE",
+    "Signature of Controlling Officer",
+    "Signature of SSE/Shop",
+    "Signature of SSE/IN",
+    "Signature of Dy.CME/Dy.CEE"
+  ]
+},
   "LW4 23": {
     "title": "Material Released Prior to Verification",
     "fields": ["Description of Material", "PL No", "Quantity", "Urgency Reason", "Approved By", "Authorized By SMM", "Qty Released", "Remarks of DSK", "Material Identification", "Inspection Details", "Nonconformity (if any)", "Recall Details"],

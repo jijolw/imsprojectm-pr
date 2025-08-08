@@ -184,12 +184,14 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
 ]
 
-# ✅ STREAMLIT CLOUD VERSION - Use credentials from Streamlit secrets (no fallback)
-creds = json.loads(st.secrets["IMS_CREDENTIALS_JSON"])
-# Write to a temporary file for gspread
-with open("temp_creds.json", "w") as f:
-    json.dump(creds, f)
-CREDENTIAL_FILE = "temp_creds.json"
+if "IMS_CREDENTIALS_JSON" in st.secrets:
+    creds = json.loads(st.secrets["IMS_CREDENTIALS_JSON"])
+    with open("temp_creds.json", "w") as f:
+        json.dump(creds, f)
+    CREDENTIAL_FILE = "temp_creds.json"
+else:
+    CREDENTIAL_FILE = "imscredentials.json"
+
 @st.cache_resource
 def get_gsheet_client(sheet_id):
     try:
