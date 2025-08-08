@@ -1,25 +1,30 @@
 {
   "GF A": {
     "title": "Title Page",
-    "fields": ["Document Title", "Issue No", "Issue Date", "Rev. No", "Rev. Date", "Prepared By", "Approved By"],
-    "signatures": ["Signed by AWM"]
+    "fields": ["Document Title", "Issue No", "Issue Date", "Rev. No", "Rev. Date", "Prepared By"],
+    "signatures": ["Approved By"]
   },
   "GF B": {
     "title": "Identification Slip",
     "fields": ["Title of Document", "Nature of Document", "Issue Status", "Copy Number", "Issued To", "Issued By", "Date"],
-    "signatures": ["Signed by AWM"]
+    "signatures": ["Approved By"]
   },
   "GF C": {
     "title": "Contents",
     "fields": ["Sl. No", "Subject", "Record No", "No of Pages"],
-    "signatures": ["Signed by AWM"]
+    "signatures": ["Approved By"]
   },
   "GF D": {
     "title": "Amendments",
     "fields": ["Sl. No", "Chapter No & Page No", "Old Issue", "New Issue", "Summary of Change", "Rev. No", "Date"],
+    "signatures": ["Approved By"]
+  },
+  "LW4 01A": {
+    "title": "RAM Analysis File (EMS & OHSAS)",
+    "fields": ["Section", "Activity", "Impact", "ID", "Condition", "S", "O", "D", "Index", "Legal"],
     "signatures": ["Signed by AWM"]
   },
-  "LW4 01": {
+  "LW4 01B": {
     "title": "RAM Analysis File (EMS & OHSAS)",
     "fields": ["Section", "Activity", "Impact", "ID", "Condition", "S", "O", "D", "Index", "Legal"],
     "signatures": ["Signed by AWM"]
